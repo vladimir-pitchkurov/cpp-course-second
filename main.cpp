@@ -22,13 +22,31 @@ unsigned gcd(unsigned a, unsigned b) {
     return gcd(b, a % b);
 }
 
+int foo(int n) {
+    cout << "1" << endl;
+    if (n <= 0)
+        return 1;
+    return foo((n * 2) / 3) + foo(n - 2);
+}
+
+void recursion(int i) {
+    if (i == 0)return;
+    int a;
+    cin >> a;
+    recursion(a);
+    cout << i << " ";
+}
+
 int main() {
     SetConsoleOutputCP(CP_UTF8);
 
-    unsigned int a, b;
-    cout << "Введите 2 числа: " << endl;
-    cin >> a >> b;
-    cout << "Наибольльший общий делитель равен: " << gcd (b, a % b) << endl;
+    int a;
+    cin >> a;
+    recursion(a);
+    //    unsigned int a, b;
+//    cout << "Введите 2 числа: " << endl;
+//    cin >> a >> b;
+//    cout << "Наибольльший общий делитель равен: " << gcd (b, a % b) << endl;
 
     return 0;
 }
