@@ -156,17 +156,59 @@ private:
     char op;
 };
 
+bool check_equals(Expression const *left, Expression const *right)
+{
+    int* vptr =  *(int**)left;
+    int* vptr2 =  *(int**)right;
+
+    return vptr == vptr2;
+}
+
+//struct Person{
+//    Person(string const& name, int const& age):name_(name),age_(age){}
+//    virtual string name() const { return name_;}
+//    virtual int agee() const { return age_;}
+//    virtual ~Person(){}
+//private:
+//    string name_;
+//    int age_;
+//};
+//
+//struct Teacher : Person {
+//    Teacher(string const& nm, int const & age):Person(nm,age){
+//        cout << agee();
+//    }
+//    int agee() const { return Person::agee()+10;}
+//};
+//
+//struct Professor : Teacher {
+//    Professor(string const& nm, int const & age):Teacher(nm,age){}
+//    string name() const { return "Prof." + Person::name();}
+//
+//};
+
 
 int main() {
     SetConsoleOutputCP(CP_UTF8);
+
+//    Teacher p("Stroustup",23);
 
     Expression *ex1 = new Number(3.0);
     Expression *ex2 = new Number(2.0);
 
     Expression *sub_ab = new BinaryOperation(ex1, '-', ex2);
-    std::cout << sub_ab->evaluate() << std::endl;
 
-    delete sub_ab; // уничтожили a и b
+    bool is_eq = check_equals(ex1, sub_ab);
+
+    if(is_eq){
+        std::cout << "equal";
+    }else{
+        std::cout << "not equal";
+    }
+
+//    std::cout << sub_ab->evaluate() << std::endl;
+
+//    delete sub_ab; // уничтожили a и b
 
 //    struct test {
 //        int ret_value;
